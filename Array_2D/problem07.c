@@ -1,6 +1,6 @@
 #include<stdio.h>
 int main(){
-    int r,c;
+    int r,c,count=0;
     scanf("%d %d",&r,&c);
     int a[r][c];
     for(int i=0;i<r;i++){
@@ -8,22 +8,29 @@ int main(){
             scanf("%d",&a[i][j]);
         }
     }
-    
-    int count=0;
     for(int i=0;i<r;i++){
-        int even=0,odd=0;
         for(int j=0;j<c;j++){
-            if(a[i][j]%2==0){
-                even++;
-            }else{
-                odd++;
+            int small=1;
+            int large=1;
+            for(int k=0;k<c;k++){
+                if(a[i][k]<a[i][j]){
+                    small=0;
+                    break;
+                }
+            }
+            for(int l=0;l<r;l++){
+                if(a[l][j]>a[i][j]){
+                    large=0;
+                    break;
+                }
+            }
+            if(small&&large){
+                count++;
             }
         }
-        if(even==odd){
-            count++;
-        }
     }
-    printf("%d ",count);
+    printf("%d",count);
+
 
 
     return 0;
