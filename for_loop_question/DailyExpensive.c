@@ -13,7 +13,7 @@ int main(){
         }
     }
     printf("Total Expense: %d\n",sum);
-    if(over==0){
+    if(over!=0){
         printf("Overspend Days %d",over);
     }
     else{
